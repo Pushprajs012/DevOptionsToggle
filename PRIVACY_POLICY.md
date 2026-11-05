@@ -1,4 +1,4 @@
-# Privacy Policy – Dev Options Switch
+# Privacy Policy – Dev Options Switcher
 
 Last updated: 2026
 
@@ -7,5 +7,4 @@ The app has no internet permission and contains no ads, analytics or third-party
 It only modifies the "Developer Options" and "USB debugging" system settings on your device
 when you tap the corresponding buttons.
 
-Contact: <your-email@example.com>
-(Play Store ko privacy policy ka public URL chahiye: is file ko GitHub Pages ya Google Sites par host karo.)
+Contact: pushprajs012@gmail.com
