@@ -1,46 +1,68 @@
 # Dev Options Switch
 
-Ek chhota open-source Android app jo **Developer Options ko bina restart ke ON/OFF** karta hai
-(aur chahe to USB debugging bhi band karta hai). Kuch phones (jaise Lava) UI se toggle karne par
-restart maangte hain; yeh app `Settings.Global` ko direct likh kar wahi kaam kar deta hai.
+एक छोटा ओपन-सोर्स Android ऐप, जिसकी मदद से आप **बिना फ़ोन रीस्टार्ट किए Developer Options को चालू या बंद** कर सकते हैं। इसके साथ USB Debugging को भी बंद किया जा सकता है।
 
-## Yeh kaise kaam karta hai
-App `WRITE_SECURE_SETTINGS` permission use karta hai. Yeh permission normal user ko UI se nahi
-milti, **ek baar ADB se grant karni padti hai**. Uske baad hamesha kaam karti hai
-(restart par bhi), jab tak app uninstall na ho.
+कुछ फ़ोन (जैसे Lava) में Developer Options को सामान्य तरीके से बंद करने पर फ़ोन रीस्टार्ट करने की आवश्यकता पड़ती है। यह ऐप `Settings.Global` में सीधे सेटिंग बदलकर ऐसा करता है, जिससे रीस्टार्ट करने की ज़रूरत नहीं पड़ती।
 
-## Use karne ka tarika (user ke liye)
-1. Phone mein Developer Options + USB Debugging ON karo (ek baar).
-2. App install karo aur kholo. App ke andar apna exact command dikhega, "Copy command" daba sakte ho.
-3. PC se phone connect karke chalao:
-   `adb shell pm grant com.devoptoggle.app android.permission.WRITE_SECURE_SETTINGS`
-4. App dobara kholo. "Permission granted" dikhega.
-5. "Developer Options OFF" dabao. Ho gaya. Dobara ON karne ke liye "ON" button.
+## यह कैसे काम करता है?
 
-### Bina PC ke (Android 11+)
-1. Shizuku install karo, Settings > Developer options > Wireless debugging se Shizuku start karo.
-2. Shizuku ya kisi terminal app (jise Shizuku access ho) se wahi `pm grant` command chalao.
+यह ऐप `WRITE_SECURE_SETTINGS` अनुमति का उपयोग करता है। Android की सुरक्षा व्यवस्था के कारण यह अनुमति सामान्य तरीके से ऐप को नहीं दी जा सकती। इसे केवल एक बार ADB के माध्यम से देना पड़ता है।
 
-## Build karna (developer ke liye)
-1. Android Studio (Koala ya naya) mein `DevOptionsToggle` folder open karo. Gradle sync apne aap hoga.
-2. Test: Run button ya `Build > Build APK(s)`.
-3. Play Store ke liye: `Build > Generate Signed Bundle / APK > Android App Bundle (.aab)`,
-   apni keystore banao (kho mat dena, backup rakho).
-4. `applicationId` (com.devoptoggle.app) ko apne unique id se badlo (app/build.gradle.kts aur
-   `namespace`, aur package folder) agar aap khud publish kar rahe ho.
-5. `targetSdk` ko Play ki current requirement tak rakho.
+एक बार अनुमति मिलने के बाद यह ऐप हमेशा काम करता है, यहाँ तक कि फ़ोन रीस्टार्ट होने के बाद भी, जब तक ऐप को अनइंस्टॉल न किया जाए।
 
-## Dusre developers ke liye
-Is project mein koi dependency nahi hai. Core logic `MainActivity.apply()` mein 2 line ka hai:
+## इस्तेमाल करने का तरीका
+
+1. अपने फ़ोन में Developer Options और USB Debugging चालू करें।
+2. ऐप इंस्टॉल करके खोलें। ऐप में आपको अनुमति देने के लिए आवश्यक कमांड दिखाई देगा। आप **Copy Command** बटन से उसे कॉपी कर सकते हैं।
+3. फ़ोन को कंप्यूटर से कनेक्ट करें और नीचे दी गई कमांड चलाएँ:
+
+   ```bash
+   adb shell pm grant com.devoptoggle.app android.permission.WRITE_SECURE_SETTINGS
+   ```
+
+4. अब ऐप को दोबारा खोलें। आपको अनुमति मिलने का संदेश दिखाई देगा।
+5. **Developer Options OFF** बटन दबाएँ। Developer Options बंद हो जाएँगे। दोबारा चालू करने के लिए ON बटन दबाएँ।
+
+### बिना कंप्यूटर के (Android 11 या उससे नया)
+
+1. अपने फ़ोन में Shizuku इंस्टॉल करें।
+2. Settings > Developer Options > Wireless Debugging में जाकर Wireless Debugging चालू करें।
+3. Shizuku को चालू करें।
+4. Shizuku की सहायता से किसी ऐसे टर्मिनल ऐप में ऊपर दी गई `pm grant` कमांड चलाएँ, जिसे Shizuku की अनुमति प्राप्त हो।
+
+## ऐप को स्वयं बनाने का तरीका (डेवलपर्स के लिए)
+
+1. Android Studio (Koala या नया संस्करण) में `DevOptionsToggle` फ़ोल्डर खोलें।
+2. Gradle Sync पूरा होने दें।
+3. ऐप चलाने के लिए Run बटन दबाएँ या `Build > Build APK(s)` चुनें।
+4. Play Store पर प्रकाशित करने के लिए `Build > Generate Signed Bundle / APK > Android App Bundle (.aab)` चुनें।
+5. अपनी Keystore बनाएँ और उसका सुरक्षित बैकअप रखें।
+6. यदि आप ऐप को अपने नाम से प्रकाशित करना चाहते हैं, तो `applicationId` (`com.devoptoggle.app`), `namespace` और संबंधित पैकेज का नाम बदलें।
+7. `targetSdk` को Play Store की वर्तमान आवश्यकताओं के अनुसार रखें।
+
+## अन्य डेवलपर्स के लिए
+
+इस प्रोजेक्ट में किसी बाहरी लाइब्रेरी या अतिरिक्त निर्भरता का उपयोग नहीं किया गया है।
+
+इसका मुख्य काम `MainActivity.apply()` में केवल दो लाइनों में होता है:
+
 ```kotlin
 Settings.Global.putInt(contentResolver, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0)
 Settings.Global.putInt(contentResolver, Settings.Global.ADB_ENABLED, 0)
 ```
-Bas manifest mein `WRITE_SECURE_SETTINGS` declare karo aur ADB se grant karo.
 
-## Limitations
-- Permission ADB ke bina nahi milti. Yeh Android ka security design hai, workaround nahi hai.
-- Kuch OEM ROMs (MIUI, ColorOS etc.) extra restrictions laga sakti hain.
-- Developer Options menu ka entry kuch phones par tab bhi dikh sakta hai; setting value 0 ho jaati hai.
+इसके लिए AndroidManifest.xml में `WRITE_SECURE_SETTINGS` अनुमति घोषित करनी होती है और ADB के माध्यम से इसे ऐप को देना होता है।
 
-License: MIT
+## सीमाएँ
+
+- इस अनुमति को ADB के बिना सामान्य तरीके से प्राप्त नहीं किया जा सकता। यह Android की सुरक्षा व्यवस्था का हिस्सा है।
+- कुछ कंपनियों के कस्टम Android सिस्टम (जैसे MIUI और ColorOS) अतिरिक्त प्रतिबंध लगा सकते हैं।
+- कुछ फ़ोन में Developer Options बंद होने के बाद भी उसका मेन्यू दिखाई दे सकता है, लेकिन उसकी सेटिंग का मान `0` हो जाता है।
+
+## लाइसेंस
+
+MIT License
+
+---
+
+**हिंदी को बढ़ावा देने के उद्देश्य से इस प्रोजेक्ट की README को हिंदी में लिखा गया है, ताकि हिंदी भाषी उपयोगकर्ता भी इसे आसानी से समझ सकें और ओपन-सोर्स प्रोजेक्ट्स से जुड़ सकें। तकनीक की जानकारी भाषा की बाधा नहीं बननी चाहिए।**
