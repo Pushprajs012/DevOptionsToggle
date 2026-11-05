@@ -127,7 +127,7 @@ class MainActivity : Activity() {
             isClickable = true
             isFocusable = true
             setOnClickListener {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/YOUR_USERNAME")))
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Pushprajs012")))
             }
         }
 
