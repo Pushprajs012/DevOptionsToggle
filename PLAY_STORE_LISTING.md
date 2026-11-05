@@ -1,5 +1,3 @@
-# Play Store Listing (copy-paste)
-
 ## App name (max 30)
 Dev Options Switch
 
@@ -13,10 +11,8 @@ Some phones ask for a restart or hide the toggle when you try to switch Develope
 
 FEATURES
 - One-tap Developer Options ON / OFF
-- Optionally turn off USB debugging at the same time
 - Shows current Developer Options state
 - Built-in copy button for the one-time setup command
-- English and Hindi
 - No ads, no internet access, no data collection
 - Tiny app, no extra libraries
 
@@ -51,6 +47,3 @@ Everyone (answer questionnaire: no violence, no user content, no ads)
 ## "Permissions declaration" / reviewer note (paste if asked)
 The app declares android.permission.WRITE_SECURE_SETTINGS. This permission is not granted at install; the user grants it explicitly through ADB. The app uses it solely to write Settings.Global.development_settings_enabled and adb_enabled when the user taps the on-screen buttons. No data is read, collected or transmitted. The app has no INTERNET permission.
 
-## Screenshots needed
-At least 2 phone screenshots (take: permission missing screen, permission granted screen).
-Feature graphic 1024x500, icon 512x512 (export from Android Studio: Image Asset).
