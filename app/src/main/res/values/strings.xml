@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Dev Options Switcher</string>
+    <string name="title">Developer Options Switch</string>
+    <string name="subtitle">Turn Developer Options ON/OFF instantly, without restart.</string>
+    <string name="perm_ok">Permission granted. Ready to use.</string>
+    <string name="perm_missing">Permission missing. Run the command below once from a PC using ADB or from your phone using Shizuku or LADB via Wireless debugging.</string>
+    <string name="state_on">Developer Options: ON</string>
+    <string name="state_off">Developer Options: OFF</string>
+    <string name="btn_off">Turn off Developer Options</string>
+    <string name="btn_on">Turn ON Developer Options</string>
+    <string name="chk_adb">Also turn off USB debugging</string>
+    <string name="btn_copy">Copy command</string>
+    <string name="copied">Command copied</string>
+    <string name="done">Done</string>
+    <string name="failed">Failed. Grant the permission first.</string>
+    <string name="cmd_label">One-time ADB command:</string>
+</resources>

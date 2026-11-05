@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Dev Options Switcher</string>
+    <string name="title">डेवलपर ऑप्शन्स स्विच</string>
+    <string name="subtitle">बिना रीस्टार्ट के डेवलपर ऑप्शन्स ON/OFF करें।</string>
+    <string name="perm_ok">परमिशन मिल गई है। ऐप तैयार है।</string>
+    <string name="perm_missing">परमिशन नहीं है। नीचे की कमांड एक बार PC (या Shizuku) से चलाएं, फिर ऐप दोबारा खोलें।</string>
+    <string name="state_on">डेवलपर ऑप्शन्स: ON</string>
+    <string name="state_off">डेवलपर ऑप्शन्स: OFF</string>
+    <string name="btn_off">डेवलपर ऑप्शन्स OFF करें</string>
+    <string name="btn_on">डेवलपर ऑप्शन्स ON करें</string>
+    <string name="chk_adb">USB डीबगिंग भी बंद करें</string>
+    <string name="btn_copy">कमांड कॉपी करें</string>
+    <string name="copied">कमांड कॉपी हो गई</string>
+    <string name="done">हो गया</string>
+    <string name="failed">नहीं हुआ। पहले परमिशन दें।</string>
+    <string name="cmd_label">एक बार की ADB कमांड:</string>
+</resources>
